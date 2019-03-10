@@ -1,10 +1,17 @@
 # Databases-Assignment_06
 ## Exercise 1
 ```sql
-SELECT customerNumber, salesRepEmployeeNumber FROM customers 
-INNER JOIN employees ON employees.employeeNumber = customers.salesRepEmployeeNumber
-INNER JOIN offices ON offices.officeCode = employees.officeCode
-WHERE customers.city = offices.city
+SELECT 
+	customerNumber, 
+	salesRepEmployeeNumber 
+FROM 
+	customers 
+INNER JOIN 
+	employees ON employees.employeeNumber = customers.salesRepEmployeeNumber
+INNER JOIN 
+	offices ON offices.officeCode = employees.officeCode
+WHERE 
+	customers.city = offices.city
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_1_Execution_Plan.png "Exercise 1 Execution Plan")
 
@@ -12,8 +19,8 @@ WHERE customers.city = offices.city
 ```sql
 SELECT 
 	o.city AS c_city, 
-    SUM(orderdetails.priceEach * orderdetails.quantityOrdered) AS SumOfOrders,
-    MAX(p.amount) AS HighestPayment
+    	SUM(orderdetails.priceEach * orderdetails.quantityOrdered) AS SumOfOrders,
+    	MAX(p.amount) AS HighestPayment
 FROM
 	orderdetails
 INNER JOIN 
@@ -33,8 +40,8 @@ GROUP BY
 ```sql
 SELECT 
 	o.city AS c_city, 
-    SUM(orderdetails.priceEach * orderdetails.quantityOrdered) OVER(PARTITION BY orderdetails.priceEach) AS SumOfOrders,
-    MAX(p.amount) OVER(PARTITION BY p.amount) AS HighestPayment
+    	SUM(orderdetails.priceEach * orderdetails.quantityOrdered) OVER(PARTITION BY orderdetails.priceEach) AS SumOfOrders,
+    	MAX(p.amount) OVER(PARTITION BY p.amount) AS HighestPayment
 FROM
 	orderdetails
 INNER JOIN 
