@@ -59,12 +59,15 @@ INNER JOIN
 
 ## Exercise 4
 ```sql
-Select u.DisplayName, posts.Title from posts
-
-inner join users u
-on u.Id = posts.OwnerUserId
-
-where posts.Title  REGEXP 'grounds'
+SELECT 
+	u.DisplayName, 
+	posts.Title 
+FROM 
+	posts
+INNER JOIN
+	users AS u ON u.Id = posts.OwnerUserId
+WHERE
+	posts.Title REGEXP 'grounds'
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_4_Execution_Plan_1.png "Exercise 4 Execution Plan 1")
 
