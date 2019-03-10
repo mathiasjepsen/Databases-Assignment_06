@@ -67,3 +67,16 @@ on u.Id = posts.OwnerUserId
 where posts.Title  REGEXP 'grounds'
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_4_Execution_Plan_1.png "Exercise 4 Execution Plan 1")
+
+## Exercise 5
+```sql
+Select u.DisplayName, posts.Title from posts
+
+inner join users u
+on u.Id = posts.OwnerUserId
+and match(title) against ('grounds');
+
+alter table posts
+add fulltext(title);
+```
+![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_5_Execution_Plan_1.png "Exercise 5 Execution Plan 1")
