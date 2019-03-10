@@ -15,6 +15,14 @@ WHERE
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_1_Execution_Plan.png "Exercise 1 Execution Plan")
 
+## Exercise 2
+```sql
+ALTER TABLE 
+	customers
+ADD INDEX 
+	cityIndex(city ASC);
+```
+
 ## Exercise 3
 ```sql
 SELECT
@@ -73,13 +81,15 @@ WHERE
 
 ## Exercise 5
 ```sql
-Select u.DisplayName, posts.Title from posts
+ALTER TABLE posts
+ADD FULLTEXT(title);
 
-inner join users u
-on u.Id = posts.OwnerUserId
-and match(title) against ('grounds');
-
-alter table posts
-add fulltext(title);
+SELECT 
+	u.DisplayName, posts.Title 
+FROM 
+	posts
+INNER JOIN 
+	users AS u ON u.Id = posts.OwnerUserId
+	AND MATCH(title) AGAINST ('grounds');
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_5_Execution_Plan_1.png "Exercise 5 Execution Plan 1")
