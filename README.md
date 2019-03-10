@@ -50,4 +50,8 @@ INNER JOIN
 ```
 ![alt-text](https://github.com/mathiasjepsen/Databases-Assignment_6/blob/master/Exercise_3_Execution_Plan_2.png "Exercise 3 Execution Plan 2")
 
+## Exercise 4
+```sql
+
+```
 
